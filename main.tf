@@ -19,7 +19,7 @@ provider "aci" {
 }
 
 module "my_tenant" {
-    source                = "../modules/tenant"
+    source                = "./modules/tenant"
     tenant_name           = "hashi-demo"
     vrfs                  = ["vrf_a", "vrf_b"]
     bridge_domains = {
