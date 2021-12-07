@@ -1,3 +1,4 @@
+#Declare the terraform providers that are required for your resources and modules to work. 
 terraform {
   required_providers {
     aci = {
@@ -7,7 +8,17 @@ terraform {
   }
 }
 
-# Configure the provider with your Cisco APIC credentials.
+# This Provider block uses credentials from the credentials.tf file that will need to be created with the values:
+# variable "user" {
+#   description = "Login information"
+#   type        = map
+#   default     = {
+#     username = "<user>"
+#     password = "<password>"
+#     url      = "<hhttps://url>"
+#   }
+# }
+
 provider "aci" {
   # APIC Username
   username = var.user.username
@@ -17,6 +28,11 @@ provider "aci" {
   url      = var.user.url
   insecure = true
 }
+
+# The following module takes input variables and creates a configuration that is the base for 2 different applicatoins
+#across 2 different setups.  with 1 tenant, 2 VRF's, 1 BD per vrf
+# 2 EPG per BD, 1 Subnet per BD, and contracts for a 2 tier web app.  Please update the variables to meet your desired
+# configuration state.
 
 module "my_tenant" {
     source                = "./modules/tenant"
@@ -30,10 +46,10 @@ module "my_tenant" {
         scope = ["public"]
       },
       app_b_bd = {
-        routing = false
+        routing = true
         vrf     = "vrf_b"
         subnet = "192.168.10.3/24"
-        scope = ["shared"]
+        scope = ["public"]
       }
     }
    application_profiles = ["app_a_ap", "app_b_ap"]
