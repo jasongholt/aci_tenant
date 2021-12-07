@@ -1,4 +1,5 @@
-#Declare the terraform providers that are required for your resources and modules to work. 
+#Declare the terraform providers that are required for your resources and modules to work.  This module uses
+# the Ciscodevnet aci provider.
 terraform {
   required_providers {
     aci = {
@@ -32,7 +33,7 @@ provider "aci" {
 # The following module takes input variables and creates a configuration that is the base for 2 different applicatoins
 #across 2 different setups.  with 1 tenant, 2 VRF's, 1 BD per vrf
 # 2 EPG per BD, 1 Subnet per BD, and contracts for a 2 tier web app.  Please update the variables to meet your desired
-# configuration state.
+# configuration state. 
 
 module "my_tenant" {
     source                = "./modules/tenant"
