@@ -1,3 +1,4 @@
+#define how to create the VRFs that you would like to.
 resource "aci_vrf" "vrfs" {
   for_each   = local.vrfs
   name       = each.key

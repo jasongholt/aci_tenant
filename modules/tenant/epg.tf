@@ -1,4 +1,6 @@
+# Here we are creating two different EPGs based on the need for different application functionality
 
+#Define your first EPG
 resource "aci_application_epg" "epga" {
   for_each               = local.epga
   name                   = each.value.name
@@ -7,6 +9,7 @@ resource "aci_application_epg" "epga" {
   depends_on             = [aci_bridge_domain.bd, aci_application_profile.app_prof]
 }
 
+#define your secong EPG
 resource "aci_application_epg" "epgb" {
   for_each               = local.epgb
   name                   = each.value.name

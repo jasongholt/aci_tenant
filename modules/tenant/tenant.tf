@@ -1,3 +1,6 @@
+#this file defins the top level Tennant name and tenant id
+
+#Define the version and required Terraform Provider
 terraform {
   required_providers {
     aci = {
@@ -7,9 +10,12 @@ terraform {
   }
 }
 
+#Define the Tenant Configuration
 resource "aci_tenant" "tenant" {
   name = local.name
 }
+
+#Output the Datasorce name for the Tenant to be used across the modules
 output "tenant_id" {
     value = "${aci_tenant.tenant.id}"
 }

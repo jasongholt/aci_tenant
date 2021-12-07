@@ -1,3 +1,6 @@
+#The Variables file is going to be used to fedine the variables objects, 
+#and the individual variables that will be used in each of the resources and across the different modules
+
 variable "tenant_name" {
   type        = string
   description = "The name of our new Tenant managed by Terraform"

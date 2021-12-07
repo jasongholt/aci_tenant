@@ -63,13 +63,14 @@ resource "aci_contract_subject" "terraform_contract_subject_b" {
     name                          = each.value.subject
     relation_vz_rs_subj_filt_att  = [aci_filter.terraform_filter_b[each.value.filter].id]
 }
+# Assignes the Contracts to the EPG for the web epgs
 resource "aci_epg_to_contract" "terraform_epgweb_contract" {
     for_each           = local.epga_contracts
     application_epg_dn = aci_application_epg.epga[each.value.epg].id
     contract_dn        = aci_contract.terraform_contract_a[each.value.contract].id
     contract_type      = each.value.contract_type
 }
-
+# Assignes the Contracts to the EPG for the db epgs
 resource "aci_epg_to_contract" "terraform_epgdb_contract" {
     for_each           = local.epgb_contracts
     application_epg_dn = aci_application_epg.epgb[each.value.epg].id

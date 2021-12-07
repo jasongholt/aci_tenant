@@ -1,3 +1,6 @@
+# This resource creates the bridge domain on the APIC controller and assigns a subnet 
+# to the Bridge Domain
+
 resource "aci_bridge_domain" "bd" {
   for_each                  = local.bridge_domains
   name                      = each.key
@@ -9,6 +12,8 @@ resource "aci_bridge_domain" "bd" {
   relation_fv_rs_ctx        = aci_vrf.vrfs[each.value.vrf].id
   depends_on                = [aci_vrf.vrfs]
 }
+
+#define the subnet configuration that you wish to have your for your subnets
 
 resource "aci_subnet" "ip" {
     for_each             = local.bridge_domains

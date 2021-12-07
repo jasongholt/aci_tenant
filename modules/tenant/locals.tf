@@ -1,3 +1,5 @@
+# Locals file to control the definition of the locals vaiables across the workspace
+
 locals {
   name                  = var.tenant_name
   vrfs                  = var.vrfs
