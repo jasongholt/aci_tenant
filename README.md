@@ -20,5 +20,5 @@ Connecting to the ACI Server:
 4. gather your variable for your configuration, you should be able to add or remove pieces as needed
 5. Modify `main.tf` with the variables that meet your naming standard
 6. `terraform init`
-7.`terraform plan`
+7. `terraform plan`
 8. `terraform apply`
