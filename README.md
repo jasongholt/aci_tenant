@@ -15,12 +15,10 @@ Connecting to the ACI Server:
 
 ## Local Runs
 1. Git clone repo locally
-2. Create your credentils.tf file using the credentials from always on sandbox
-
-
-4. 
-5. Modify `terraform.tfvars.sample` and update ACI URL, Username, Password.
-6. Rename `terraform.tfvars.sample` to `terraform.tfvars`
-7. `terraform init`
-8.`terraform plan`
-9. `terraform apply`
+2. Create your credentils.tf file using the sample creds.tf file
+3. ensure your provider is running the correct and latest version
+4. gather your variable for your configuration, you should be able to add or remove pieces as needed
+5. Modify `main.tf` with the variables that meet your naming standard
+6. `terraform init`
+7.`terraform plan`
+8. `terraform apply`
